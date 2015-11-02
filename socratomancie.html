@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Socratomancie version LAbare</title>
+	<meta charset='UTF-8' />
+</head>
+<body>
+	<h1>Socratomancie</h1>
+	<p style='font-style: italic;'>D'après l'art perdu de la Socratomancie Motion-Twinienne</p>
+	<input type='text' id='question' />
+	<input type='submit' id='submit' />
+	<div id='answer' style='font-weight: bold;'>Posez-moi donc une question !</div>
+	<script>
+		function giveAnswer() {
+			var question = document.getElementById('question').value.match(/[A-Za-z]/g).length;
+			var answer = document.getElementById('answer');
+			var oui = ["Oui !", "Oui.", "Bien sûr !", "Affirmatif !", "Chef, oui chef !"];
+			var non = ["Non !", "Non.", "Certainement pas…", "Hahahahaha ! Non."];
+			if (question == 0)
+				{ answer.textContent = "Posez-moi donc une question !"; }
+			else if (question % 2) //Impair
+				{ answer.textContent = non[Math.floor(Math.random() * non.length)]; }
+			else //Pair
+				{ answer.textContent = oui[Math.floor(Math.random() * oui.length)]; }
+		}
+
+		document.getElementById('submit').addEventListener('click', giveAnswer);
+		document.getElementById('question').addEventListener('keyup', function(e) {
+			if (e.keyCode == '13')
+				{ giveAnswer(); }
+		});
+	</script>
+</body>
+</html>
