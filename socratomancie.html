@@ -12,13 +12,13 @@
 	<div id='answer' style='font-weight: bold;'>Posez-moi donc une question !</div>
 	<script>
 		function giveAnswer() {
-			var question = document.getElementById('question').value.match(/[A-Za-z]/g).length;
+			var question = document.getElementById('question').value.match(/[A-Za-z]/g);
 			var answer = document.getElementById('answer');
 			var oui = ["Oui !", "Oui.", "Bien sûr !", "Affirmatif !", "Chef, oui chef !"];
 			var non = ["Non !", "Non.", "Certainement pas…", "Hahahahaha ! Non."];
-			if (question == 0)
+			if (!question)
 				{ answer.textContent = "Posez-moi donc une question !"; }
-			else if (question % 2) //Impair
+			else if (question.length % 2) //Impair
 				{ answer.textContent = non[Math.floor(Math.random() * non.length)]; }
 			else //Pair
 				{ answer.textContent = oui[Math.floor(Math.random() * oui.length)]; }
